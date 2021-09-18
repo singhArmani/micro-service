@@ -1,0 +1,26 @@
+name: micro-service
+project_root: ~/workspace/micro-services-js/introduction-to-microservices
+
+windows:
+  - service-discovery:
+      root: ~/workspace/micro-services-js/introduction-to-microservices
+      layout: main-vertical
+      panes:
+        - java -jar eureka-service-0.0.1-SNAPSHOT.jar
+  - zuul:
+      root: ~/workspace/micro-services-js/introduction-to-microservices
+      layout: main-vertical
+      panes:
+        - java -jar zuul-0.0.1-SNAPSHOT.jar --server.port=9090 --eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+  - hero-service 🦸:
+      root: ~/workspace/micro-services-js/introduction-to-microservices/heroes-v2
+      layout: main-vertical
+      panes:
+        - node heroes.js
+  - threat-service 🚨:
+      root: ~/workspace/micro-services-js/introduction-to-microservices/threats-v2
+      layout: main-vertical
+      panes:
+        - node threats.js
+     
+
